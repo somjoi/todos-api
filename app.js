@@ -40,7 +40,7 @@ function findUnCompleteTitle() {
 
 function clearAllTitleComplete() {
     let result = todos.filter(function (todos) {
-        todos.id < 1
+        return todos.complete === false
     })
     todos = result
 }
@@ -68,7 +68,7 @@ app.post('/addTodo', (req, res) => {
     res.status(201).send(todos)
 })
 
-app.put('/TitleComplete/:id', (req, res) => {
+app.put('/titleComplete/:id', (req, res) => {
     let id = req.params.id
 
     todos[id - 1].complete = true
